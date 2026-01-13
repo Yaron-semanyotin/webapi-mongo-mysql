@@ -5,6 +5,7 @@ const productsRouter = require('./api/v1/routes/products');
 const categoriesRouter = require('./api/v1/routes/categories');
 const ordersRouter = require('./api/v1/routes/orders');
 const usersRouter = require('./api/v1/routes/users');
+const cors = require('cors');
 const morgan = require('morgan');
 const ipFilter = require('./api/v1/middlewares/ipFilter');
 const mongoose = require('mongoose');
@@ -17,6 +18,7 @@ mongoose.connect(mongoConnStr).then((stat)=>{
 });
 
 
+app.use(cors());
 
 app.use(morgan('dev'));
 app.use(ipFilter);
